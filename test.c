@@ -1,19 +1,77 @@
 #include "snake.h"
 
-int main(int argc, char const *argv[])
+int main(int agrc, char* args[])
 {
+	SDL_Init(SDL_INIT_VIDEO);
+	IMG_Init(IMG_INIT_PNG);
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+	SDL_Window* window = SDL_CreateWindow("Snake Game (prototype)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	SDL_Renderer* renderer = SDL_CreateRenderer(window -1 SDL_RENDERER_ACCELERATED);
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 50, );
+	SDL_Texture* snakeTexture = loadTexture("assets/snake.png", renderer);
+	SDL_Texture* foodTexture = loadTexture("assets/food.png", renderer);
+	SDL_Texture* grassTexture = loadTexture("assets/grass.png", renderer);
 
-	SDL_RenderClear(renderer);
+	Snake snake;
+	Point food;
+
+	initSnake(&snake);
+	placeFood(&food);
+
+	bool quit = false;
+	SDL_Event e;
+
+	while (!quit)
+	{
+		while (SDL_PollEvent(&e) != 0)
+		{
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			} 
+			else
+			{
+				handleInput(&snake, &e);
+			}
+		}
+	
+	moveSnake(&snake);
+
+	if (checkCollision(&snake))
+	{
+		quit = true 
+	}
+
+	if (checkFoodCollision(&snake, &food))
+	{
+		growSnake(&snake);
+		placeFood(&food);
+	}
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
+    SDL_RenderClear(renderer);
+    renderTexture(renderer, grassTexture, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	renderSnake(renderer, &snake, snakeTexture);
+	renderFood(renderer, &food, foodTexture);
 
 	SDL_RenderPresent(renderer);
 
-	SDL_Delay(3000);
+	SDL_Delay(120);
 
-	return 0;
+	}
+
+    SDL_DestroyTexture(snakeTexture);
+    SDL_DestroyTexture(foodTexture);
+    SDL_DestroyTexture(grassTexture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    IMG_Quit();
+    SDL_Quit();
+
+    return 0;
 }
+
+
+
+

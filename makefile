@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -g
-LDFLAGS = -lSDL2
+LDFLAGS = -lSDL2 -lSDL2_image
 
 SOURCES = snake.c
 HEADERS = snake.h
