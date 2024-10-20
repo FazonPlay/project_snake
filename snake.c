@@ -79,7 +79,7 @@ bool checkCollision(Snake* snake)
         return true;
     }
 
-    for (int i = 0; i < snake->length; i++)
+    for (int i = 1; i < snake->length; i++)
     {
         if (snake->body[0].x == snake->body[i].x && snake->body[0].y == snake->body[i].y)
         {
