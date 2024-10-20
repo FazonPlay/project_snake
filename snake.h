@@ -27,7 +27,7 @@ void handleInput(Snake* snake, SDL_Event* e);
 bool checkCollision(Snake* snake);
 void growSnake(Snake* snake);
 
-bool checkFoodCollision(Snake* snake, Point* food, SDL_Texture* foodTexture);
+bool checkFoodCollision(Snake* snake, Point* food);
 
 void renderFood(SDL_Renderer* renderer, Point* food, SDL_Texture* foodTexture);
 void placeFood(Point* food);

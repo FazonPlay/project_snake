@@ -95,7 +95,7 @@ void growSnake(Snake* snake)
     snake->length++;
 }
 
-bool checkFoodCollision(Snake* snake, Point* food, SDL_Texture* foodTexture)
+bool checkFoodCollision(Snake* snake, Point* food)
 {
     if (snake->body[0].x == food->x && snake->body[0].y == food->y)
     {

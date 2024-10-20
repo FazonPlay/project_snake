@@ -6,18 +6,17 @@ int main(int agrc, char const *argv[])
 	SDL_Init(SDL_INIT_VIDEO);
 	IMG_Init(IMG_INIT_PNG);
 
-	SDL_Window* window = SDL_CreateWindow("Snake Game (prototype)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window -1 SDL_RENDERER_ACCELERATED);
+	SDL_Window* window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	SDL_Texture* snakeTexture = loadTexture("assets/snake.png", renderer);
-	SDL_Texture* foodTexture = loadTexture("assets/food.png", renderer);
-	SDL_Texture* grassTexture = loadTexture("assets/grass.png", renderer);
+    SDL_Texture* snakeTexture = loadTexture("assets/snake.png", renderer);  // Custom texture: snake
+    SDL_Texture* foodTexture = loadTexture("assets/apple.png", renderer);   // Custom texture: apple
+    SDL_Texture* grassTexture = loadTexture("assets/grass.png", renderer);  // Custom texture: grass
 
 	Snake snake;
 	Point food;
 
-	initSnake(&snake);
-	placeFood(&food);
+	initSnake(&snake);	placeFood(&food);
 
 	bool quit = false;
 	SDL_Event e;
@@ -40,7 +39,7 @@ int main(int agrc, char const *argv[])
 
 	if (checkCollision(&snake))
 	{
-		quit = true 
+		quit = true; 
 	}
 
 	if (checkFoodCollision(&snake, &food))

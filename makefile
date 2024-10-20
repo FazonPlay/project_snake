@@ -1,8 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 LDFLAGS = -lSDL2 -lSDL2_image
-
-SOURCES = snake.c
+SOURCES = snake.c test.c
 HEADERS = snake.h
 OBJECTS = $(SOURCES:.c=.o)
 EXEC = snake_game
