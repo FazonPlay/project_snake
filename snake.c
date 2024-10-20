@@ -73,8 +73,8 @@ void handleInput(Snake* snake, SDL_Event* e)
 
 bool checkCollision(Snake* snake)
 {
-    if (snake->body[0].x - 2 < 0 || snake->body[0].x + 2 >= SCREEN_WIDTH / TILE_SIZE ||
-        snake->body[0].y - 2 < 0 || snake->body[0].y + 2 >= SCREEN_HEIGHT / TILE_SIZE)
+    if (snake->body[0].x - 1 < 0 || snake->body[0].x + 1 >= SCREEN_WIDTH / TILE_SIZE ||
+        snake->body[0].y - 1 < 0 || snake->body[0].y + 1 >= SCREEN_HEIGHT / TILE_SIZE)
     {
         return true;
     }
