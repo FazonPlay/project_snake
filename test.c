@@ -11,7 +11,7 @@ int main(int agrc, char const *argv[])
 
     SDL_Texture* snakeTexture = loadTexture("assets/snake.png", renderer);
     SDL_Texture* foodTexture = loadTexture("assets/apple.png", renderer);   
-    SDL_Texture* grassTexture = loadTexture("assets/grass.png", renderer);  
+    SDL_Texture* grassTexture = loadTexture("assets/grass.jpg", renderer);  
 
 	Snake snake;
 	Point food;
