@@ -26,7 +26,9 @@ void renderSnake(SDL_Renderer* renderer, Snake* snake, SDL_Texture* snakeTexture
 void handleInput(Snake* snake, SDL_Event* e);
 bool checkCollision(Snake* snake);
 void growSnake(Snake* snake);
-bool checkFoodCollision(Snake* snake, Point* food);
+
+bool checkFoodCollision(Snake* snake, Point* food, SDL_Texture* foodTexture);
+
 void renderFood(SDL_Renderer* renderer, Point* food, SDL_Texture* foodTexture);
 void placeFood(Point* food);
 SDL_Texture* loadTexture(const char* path, SDL_Renderer* renderer);

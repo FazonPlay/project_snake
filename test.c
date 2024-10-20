@@ -1,6 +1,7 @@
 #include "snake.h"
 
-int main(int agrc, char* args[])
+
+int main(int agrc, char const *argv[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	IMG_Init(IMG_INIT_PNG);
